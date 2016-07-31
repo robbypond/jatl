@@ -17,6 +17,7 @@
 package com.googlecode.jatl;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.io.StringWriter;
@@ -681,5 +682,14 @@ public class HtmlBuilderTest {
 		};
 		writer.getBuffer().toString();
 	}
-	
+
+	@Test
+    public void testDocType() {
+	    new Html(sw) {
+            {
+                doctype("html");
+            }
+        };
+        assertThat(writer.getBuffer().toString().trim(), is("<!DOCTYPE html>"));
+    }
 }

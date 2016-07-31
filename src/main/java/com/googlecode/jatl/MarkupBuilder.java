@@ -583,7 +583,11 @@ public abstract class MarkupBuilder<T> {
 		
 		return getSelf();
 	}
-	
+
+    public void doctype(String value) {
+        raw("<!DOCTYPE " + value + ">");
+    }
+
 	private void writeCurrentTag() {
 		checkWriter();
 		if ( ! tagStack.isEmpty() ) {
@@ -726,7 +730,7 @@ public abstract class MarkupBuilder<T> {
 			throw new RuntimeException("Builder Indenting failed:", e);
 		}	
 	}
-	
+
 	/**
 	 * A default indenter that uses tabs.
 	 */
